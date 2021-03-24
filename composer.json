@@ -13,8 +13,11 @@
     "autoload": {
         "psr-4": {
             "App\\": "src",
+            "App\\BusinessLogic\\": "src/businessLogic",
             "App\\Controller\\": "src/controller",
             "App\\Model\\": "src/model",
+            "App\\Model\\Abstracts\\": "src/model/abstract",
+            "App\\Model\\Interfaces\\": "src/model/interface",
             "App\\Model\\Entity\\": "src/modle/entity",
             "App\\Tests\\": "tests/"
         }
