@@ -1,0 +1,30 @@
+{
+    "name": "swanand/tracktik-test",
+    "description": "A project to simulate buying of electronic items",
+    "authors": [
+        {
+            "name": "Swanand Reddy Luthmoodoo",
+            "email": "swanand.reddy@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src",
+            "App\\Controller\\": "src/controller",
+            "App\\Model\\": "src/model",
+            "App\\Model\\Entity\\": "src/modle/entity",
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.2"
+        },        
+        "optimize-autoloader": true        
+    }    
+
+
+}
