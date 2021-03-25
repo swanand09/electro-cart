@@ -1,7 +1,7 @@
 <?php
-namespace App\Model\Entity;
+namespace Tracktik\Model\Entity;
 
-use App\Model\Abstracts\ElectronicItem;
+use Tracktik\Model\Abstracts\ElectronicItem;
 
 class Console extends ElectronicItem
 {
