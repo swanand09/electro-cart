@@ -3,7 +3,6 @@ namespace Tracktik\Model\Interfaces;
 
 interface ElectronicItem
 {
-
     public function getPrice();
     public function setPrice($price);
     public function getType();

@@ -20,7 +20,7 @@ class ElectronicItems
     {
         $sorted = array();
         foreach ($this->items as $item) {
-            $sorted[($item->getPrice() * 100)] = $item;
+            $sorted[(call_user_func([$item, 'get' . ucfirst($type)]) * 100)] = $item;
         }
         
         return ksort($sorted, SORT_NUMERIC);

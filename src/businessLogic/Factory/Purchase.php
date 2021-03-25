@@ -7,6 +7,7 @@ use Tracktik\BusinessLogic\ElectronicItems;
 use Tracktik\Model\Entity\Television;
 use Tracktik\Model\Entity\Console;
 use Tracktik\Model\Entity\Microwave;
+use Tracktik\Model\Entity\Controller;
 
 class Purchase
 {
@@ -32,5 +33,29 @@ class Purchase
         $microwave->setPrice($price);
        
         return $microwave;
+    }
+
+    public static function controller(string $wired): Controller
+    {
+        $controller = new Controller();
+        $controller->setPrice(0);
+        $controller->setWired($wired);
+       
+        return $controller;
+    }
+
+    public static function getSortedItems(array $items, $sortType): array
+    {
+        $electronicItems = new ElectronicItems($items);
+        return $electronicItems->getSortedItems($sortType);
+    }
+
+    public static function getTotalPrice(array $sortedItems): float
+    {
+        $totalPrice = 0.00;
+        foreach ($sortedItems as $item) {
+            $totalPrice += $item->getPrice();
+        }
+        return $totalPrice;
     }
 }

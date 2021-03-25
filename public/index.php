@@ -7,7 +7,7 @@ use App\Controller\PurchaseItem as Controller_PurchaseItem;
 $app = AppFactory::create();
 $app->addErrorMiddleware(false, false, false);
 
-$app->get('/',  Controller_PurchaseItem::class . ':listAllItems');
+$app->get('/', Controller_PurchaseItem::class . ':listAllItems');
 
 
 

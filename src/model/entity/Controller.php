@@ -3,11 +3,11 @@ namespace Tracktik\Model\Entity;
 
 use Tracktik\Model\Abstracts\ElectronicItem;
 
-class Microwave extends ElectronicItem
+class Controller extends ElectronicItem
 {
     public function __construct()
     {
-        $this->setType(self::ELECTRONIC_ITEM_MICROWAVE);
+        $this->setType(SELF::ELECTRONIC_ITEM_CONTROLLER);
         $this->setExtras(0);
     }
     
