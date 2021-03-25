@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Interfaces;
+namespace Tracktik\Model\Interfaces;
 
 interface ElectronicItem
 {

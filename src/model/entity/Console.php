@@ -5,11 +5,10 @@ use App\Model\Abstracts\ElectronicItem;
 
 class Console extends ElectronicItem
 {
-    public function __construct(float $price)
+    public function __construct()
     {
-        $this->setType(self::ELECTRONIC_ITEM_MICROWAVE);
-        $this->setPrice($price);
-        $this->setWired(true);
+        $this->setType(self::ELECTRONIC_ITEM_CONSOLE);
+        
         $this->setExtras(4);
     }
     

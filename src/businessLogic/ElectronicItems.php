@@ -1,7 +1,7 @@
 <?php
-namespace  App\BusinessLogic;
+namespace  Tracktik\BusinessLogic;
 
-use App\Model\Abstracts\ElectronicItem as Abstract_ElectronicItem;
+use Tracktik\Model\Abstracts\ElectronicItem as Abstract_ElectronicItem;
 
 class ElectronicItems
 {

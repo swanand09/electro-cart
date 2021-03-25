@@ -1,9 +1,9 @@
 <?php
-namespace App\Model\Entity;
+namespace Tracktik\Model\Entity;
 
-use App\Model\ElectronicItem;
+use Tracktik\Model\ElectronicItem;
 
-class Controller extends ElectronicItem
+class Extras_Controller extends ElectronicItem
 {
     public function __construct()
     {

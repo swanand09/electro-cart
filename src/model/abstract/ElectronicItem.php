@@ -1,7 +1,8 @@
 <?php
-namespace App\Model\Abstracts;
+declare(strict_types=1);
+namespace Tracktik\Model\Abstracts;
 
-use App\Model\Interfaces\ElectronicItem as Interface_ElectronicItem;
+use Tracktik\Model\Interfaces\ElectronicItem as Interface_ElectronicItem;
 
 abstract class ElectronicItem implements Interface_ElectronicItem
 {
@@ -22,16 +23,14 @@ abstract class ElectronicItem implements Interface_ElectronicItem
     const ELECTRONIC_ITEM_TELEVISION = 'television';
     const ELECTRONIC_ITEM_CONSOLE = 'console';
     const ELECTRONIC_ITEM_MICROWAVE = 'microwave';
-    const ELECTRONIC_ITEM_CONTROLLER = 'controller';
     
     public static $types = array(
         self::ELECTRONIC_ITEM_CONSOLE,
         self::ELECTRONIC_ITEM_MICROWAVE,
-        self::ELECTRONIC_ITEM_TELEVISION,
-        self::ELECTRONIC_ITEM_CONTROLLER
+        self::ELECTRONIC_ITEM_TELEVISION
     );
     
-    public function getPrice()
+    public function getPrice(): float
     {
         return $this->price;
     }
@@ -40,7 +39,7 @@ abstract class ElectronicItem implements Interface_ElectronicItem
         $this->price = $price;
     }
     
-    public function getType()
+    public function getType():string
     {
         return $this->type;
     }
@@ -58,7 +57,7 @@ abstract class ElectronicItem implements Interface_ElectronicItem
         $this->wired = $wired;
     }
     
-    public function getExtras()
+    public function getExtras():int
     {
         return $this->extras;
     }

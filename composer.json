@@ -8,18 +8,20 @@
         }
     ],
     "require": {
-        "slim/slim": "4.*"
+        "slim/slim": "4.*",
+        "phpunit/phpunit": "^8.5"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src",
-            "App\\BusinessLogic\\": "src/businessLogic",
-            "App\\Controller\\": "src/controller",
-            "App\\Model\\": "src/model",
-            "App\\Model\\Abstracts\\": "src/model/abstract",
-            "App\\Model\\Interfaces\\": "src/model/interface",
-            "App\\Model\\Entity\\": "src/modle/entity",
-            "App\\Tests\\": "tests/"
+            "Tracktik\\": "src",
+            "Tracktik\\BusinessLogic\\": "src/businessLogic",
+            "Tracktik\\BusinessLogic\\Factory\\": "src/businessLogic/factory",
+            "Tracktik\\Controller\\": "src/controller",
+            "Tracktik\\Model\\": "src/model",
+            "Tracktik\\Model\\Abstracts\\": "src/model/abstract",
+            "Tracktik\\Model\\Interfaces\\": "src/model/interface",
+            "Tracktik\\Model\\Entity\\": "src/modle/entity",
+            "Tracktik\\Tests\\": "tests/"
         }
     },
     "config": {
