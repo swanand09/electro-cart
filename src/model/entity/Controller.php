@@ -1,5 +1,9 @@
 <?php
-class Microwave extends ElectronicItem
+namespace App\Model\Entity;
+
+use App\Model\ElectronicItem;
+
+class Controller extends ElectronicItem
 {
     public function __construct()
     {

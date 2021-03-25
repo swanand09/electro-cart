@@ -1,0 +1,71 @@
+<?php
+namespace App\Model\Abstracts;
+
+use App\Model\Interfaces\ElectronicItem as Interface_ElectronicItem;
+
+abstract class ElectronicItem implements Interface_ElectronicItem
+{
+        
+    /**
+     * @var float
+     */
+    private $price;
+    
+    /**
+     * @var string
+     */
+    private $type;
+    private $wired;
+    
+    protected $extras;
+    
+    const ELECTRONIC_ITEM_TELEVISION = 'television';
+    const ELECTRONIC_ITEM_CONSOLE = 'console';
+    const ELECTRONIC_ITEM_MICROWAVE = 'microwave';
+    const ELECTRONIC_ITEM_CONTROLLER = 'controller';
+    
+    public static $types = array(
+        self::ELECTRONIC_ITEM_CONSOLE,
+        self::ELECTRONIC_ITEM_MICROWAVE,
+        self::ELECTRONIC_ITEM_TELEVISION,
+        self::ELECTRONIC_ITEM_CONTROLLER
+    );
+    
+    public function getPrice()
+    {
+        return $this->price;
+    }
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+    
+    public function getType()
+    {
+        return $this->type;
+    }
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    public function getWired()
+    {
+        return $this->wired;
+    }
+    public function setWired($wired)
+    {
+        $this->wired = $wired;
+    }
+    
+    public function getExtras()
+    {
+        return $this->extras;
+    }
+    public function setExtras($extras)
+    {
+        $this->extras = $extras;
+    }
+
+    abstract protected function maxExtras();
+}
