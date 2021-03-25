@@ -2,11 +2,11 @@
 
 namespace Tracktik\Tests;
 
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Assert;
 use Tracktik\BusinessLogic\Factory\Purchase;
 use Tracktik\Model\Entity\Television;
 
-class FactoryPurchaseTest extends TestCase
+class FactoryPurchaseTest extends Assert
 {
     public function testFactoryPurchase()
     {
