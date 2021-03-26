@@ -5,22 +5,25 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use Tracktik\BusinessLogic\Factory\Purchase;
-use Slim\Views\Twig;
-use DI\Container;
-class PurchaseItem
+
+class ApiPurchaseItem
 {
-	private $view;
+	
 
-    public function __construct(Container $container)
-    {
-	    $this->view = $container->get('view');
-    }
-
-    private function renderHtml($itemsBought,Response $response) :Response
+    private function renderJson($itemsBought,Response $response) :Response
 	{
 		try{
 			
-			return $this->view->render($response, 'layout.html.twig', $itemsBought);
+			if(isset($itemsBought['error'])){
+				throw new \ErrorException($itemsBought['error']);
+			}
+			
+			$response->getBody()->write(json_encode($itemsBought,JSON_PRETTY_PRINT));
+			return $response
+				->withHeader('Content-Type', 'application/json')
+				->withHeader('Access-Control-Allow-Origin', '*')
+				->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+				->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
 		} catch(\ErrorException $e){
 			$response->getBody()->write(json_encode(["error"=>["text"=>$e->getMessage()]]));
 			return $response
@@ -29,7 +32,7 @@ class PurchaseItem
 	}
 
 
-    public function getItems(Request $request, Response $response) :Response
+    public function apiGetItems(Request $request, Response $response) :Response
     {
         $televisionOne = Purchase::television(202.54);
         $televisionOne->setExtras(2);
@@ -55,8 +58,9 @@ class PurchaseItem
 
         $sortedItems = Purchase::getSortedItems($items, 'price');
         $totalPrice = Purchase::getTotalPrice($sortedItems);
-        return $this->renderHtml(compact([
+        return $this->renderJson(compact([
                                 "sortedItems","totalPrice"
                               ]),$response);
     }
+    
 }

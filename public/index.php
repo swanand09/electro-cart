@@ -5,32 +5,33 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Slim\Factory\AppFactory;
-// use Slim\Views\Twig;
-// use Slim\Http\Uri;
-// use Slim\Http\Environment;
+use Slim\Views\Twig;
+use Slim\Views\TwigMiddleware;
+use DI\Container;
 
 use Tracktik\Controller\PurchaseItem as Controller_PurchaseItem;
+use Tracktik\Controller\ApiPurchaseItem as Controller_ApiPurchaseItem;
 
-$app = AppFactory::create();
 
-
-// Get container
-$container = $app->getContainer();
+// Create Container
+$container = new Container();
+AppFactory::setContainer($container);
 
 // Register component on container
-// $container['view'] = function ($container) {
-//     $view = new Twig(__DIR__ .'/../src/view', [
-//         'cache' => __DIR__ .'../var/cache/twig'
-//     ]);
+$container->set('view', function () {
+    return  Twig::create(__DIR__ . '/../src/view', [
+        'cache_enabled' => false,
+        'cache_path' => __DIR__ . '/../var/cache/twig'
+    ]);
+});
+$app = AppFactory::create();
 
-    
-//     return $view;
-// };
+$app->add(TwigMiddleware::createFromContainer($app));
 
 $app->addErrorMiddleware(true, false, false);
 
-$app->get('/api/list-items-purchase/', Controller_PurchaseItem::class . ':apiGetItems');
+$app->get('/api/list-items-purchase/', Controller_ApiPurchaseItem::class . ':apiGetItems');
 
-$app->get('/', Controller_PurchaseItem::class . ':getItems');
+$app->get('/', Controller_PurchaseItem::class  . ':getItems');
 
 $app->run();
