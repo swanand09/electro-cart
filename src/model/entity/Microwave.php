@@ -3,7 +3,7 @@ namespace Tracktik\Model\Entity;
 
 use Tracktik\Model\Abstracts\ElectronicItem;
 
-class Microwave extends ElectronicItem
+class Microwave extends ElectronicItem implements \JsonSerializable
 {
     public function __construct()
     {
@@ -15,4 +15,12 @@ class Microwave extends ElectronicItem
     {
         return true;
     }
+	
+	public function JsonSerialize(){
+		
+		return [
+			"type"=> $this->getType(),
+			"price" => $this->getPrice()
+		];
+	}
 }

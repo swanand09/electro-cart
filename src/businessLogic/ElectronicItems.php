@@ -1,10 +1,15 @@
 <?php
+declare(strict_types=1);
 namespace  Tracktik\BusinessLogic;
 
 use Tracktik\Model\Abstracts\ElectronicItem as Abstract_ElectronicItem;
 
 class ElectronicItems
 {
+	
+	/**
+	 * @var array
+	 */
     private $items = array();
     
     public function __construct(array $items)
@@ -12,11 +17,13 @@ class ElectronicItems
         $this->items = $items;
     }
     
-    /**
-     * Returns the items depending on the sorting type requested
-     * @return array
-     */
-    public function getSortedItems($type)
+    
+	/**
+	 * Returns the items depending on the sorting type requested
+	 * @param $type
+	 * @return array
+	 */
+    public function getSortedItems($type):array
     {
         $sorted = array();
         foreach ($this->items as $item) {

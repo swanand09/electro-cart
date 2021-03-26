@@ -3,7 +3,7 @@ namespace Tracktik\Model\Entity;
 
 use Tracktik\Model\Abstracts\ElectronicItem;
 
-class Controller extends ElectronicItem
+class Controller extends ElectronicItem implements \JsonSerializable
 {
     public function __construct()
     {
@@ -15,4 +15,12 @@ class Controller extends ElectronicItem
     {
         return true;
     }
+	
+	public function JsonSerialize(){
+	
+		return [
+			"type"=> $this->getType(),
+			"wired type" => $this->getWired()
+		];
+	}
 }

@@ -4,7 +4,7 @@ namespace Tracktik\Model\Entity;
 use Tracktik\Model\Abstracts\ElectronicItem;
 use Tracktik\Model\Interfaces\ExtraItem;
 
-class Console extends ElectronicItem implements ExtraItem
+class Console extends ElectronicItem implements ExtraItem,\JsonSerializable
 {
      /**
      * @var array
@@ -31,5 +31,14 @@ class Console extends ElectronicItem implements ExtraItem
     public function getListExtras(): array
     {
         return $this->listExtras;
+    }
+    
+    public function JsonSerialize(){
+    
+    	return [
+    		     "type"=> $this->getType(),
+		         "extras"=>$this->getListExtras(),
+		         "price" => $this->getPrice()
+	    ];
     }
 }
