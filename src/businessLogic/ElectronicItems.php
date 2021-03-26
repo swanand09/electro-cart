@@ -23,7 +23,8 @@ class ElectronicItems
             $sorted[(call_user_func([$item, 'get' . ucfirst($type)]) * 100)] = $item;
         }
         
-        return ksort($sorted, SORT_NUMERIC);
+        ksort($sorted, SORT_NUMERIC);
+        return $sorted;
     }
     
     /**
