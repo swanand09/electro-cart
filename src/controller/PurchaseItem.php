@@ -20,7 +20,7 @@ class PurchaseItem
 	{
 		try{
 			
-			return $this->view->render($response, 'layout.html.twig', $itemsBought);
+			return $this->view->render($response, 'items_purchased.html.twig', ["items"=>$itemsBought]);
 		} catch(\ErrorException $e){
 			$response->getBody()->write(json_encode(["error"=>["text"=>$e->getMessage()]]));
 			return $response

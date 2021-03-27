@@ -19,10 +19,13 @@ AppFactory::setContainer($container);
 
 // Register component on container
 $container->set('view', function () {
-    return  Twig::create(__DIR__ . '/../src/view', [
+    $twig =  Twig::create(__DIR__ . '/../src/view', [
         'cache_enabled' => false,
-        'cache_path' => __DIR__ . '/../var/cache/twig'
+        'cache_path' => __DIR__ . '/../var/cache/twig',
+        'debug'=> true
     ]);
+    $twig->addExtension(new \Twig\Extension\DebugExtension());
+    return $twig;
 });
 $app = AppFactory::create();
 
