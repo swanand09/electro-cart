@@ -20,7 +20,8 @@ class Controller extends ElectronicItem implements \JsonSerializable
 	
 		return [
 			"type"=> $this->getType(),
-			"wired type" => $this->getWired()
+			"wired_type" => $this->getWired(),
+            "price" => $this->getPrice()
 		];
 	}
 }

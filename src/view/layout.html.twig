@@ -5,13 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello Bulma!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <style>
+      body{
+        background:#EEE;
+        /* font-size:0.9em !important; */
+      }
+      .invoice{
+        width:670px !important;
+        margin:50px auto;
+        .invoice-header{
+          padding:25px 25px 15px;
+          h1{
+            margin:0
+          }
+          .media{
+            .media-body{
+              font-size:.9em;
+              margin:0;
+            }
+          }
+        }
+        .invoice-body{
+          border-radius:10px;
+          padding:25px;
+          background:#FFF;
+        }
+        .invoice-footer{
+          padding:15px;
+          font-size:0.9em;
+          text-align:center;
+          color:#999;
+        }
+      }
+      .logo{
+        max-height:70px;
+        border-radius:10px;
+      }
+      .dl-horizontal{
+        margin:0;
+        dt{
+              float: left;
+          width: 80px;
+          overflow: hidden;
+          clear: left;
+          text-align: right;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        dd{
+          margin-left:90px;
+        }
+      }
+      .rowamount{
+        padding-top:15px !important;
+      }
+      .rowtotal{
+        font-size:1.3em;
+      }
+      .colfix{
+        width:12%;
+      }
+      .mono{
+        font-family:monospace;
+      }
+    </style>
   </head>
   <body>
   <section class="section">
     <div class="container">
       <h1 class="title">
-        Your purchased items
+        Tracktik PHP Assessment
       </h1>
+      <h2 class="subtitle">Submitted by: Swanand Reddy Luthmoodoo <br><i>29th March, 2021</i></h2>
        {% block content %}{% endblock %}
     </div>
   </section>
