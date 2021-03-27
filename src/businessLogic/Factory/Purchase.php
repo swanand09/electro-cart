@@ -54,7 +54,11 @@ class Purchase
     {
         $totalPrice = 0.00;
         foreach ($sortedItems as $item) {
-            $totalPrice += $item->getPrice();
+            if ($item->getExtras()>0) {
+                $totalPrice += $item->getTotalPrice();
+            } else {
+                $totalPrice += $item->getPrice();
+            }
         }
         return $totalPrice;
     }

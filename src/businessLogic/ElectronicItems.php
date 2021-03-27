@@ -26,8 +26,10 @@ class ElectronicItems
     public function getSortedItems($type):array
     {
         $sorted = array();
+        $count = 1;
         foreach ($this->items as $item) {
-            $sorted[(call_user_func([$item, 'get' . ucfirst($type)]) * 100)] = $item;
+            $sorted[(call_user_func([$item, 'get' . ucfirst($type)]) * 100)+$count] = $item;
+            $count++;
         }
         
         ksort($sorted, SORT_NUMERIC);

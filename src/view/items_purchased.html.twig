@@ -23,15 +23,19 @@
                                     <br/>
                                     <small class="text-muted">({{ loop.index }}) {{ extra.wired  ~ ' '~ extra.type }}</small>
                                 {% endfor %}
+                                <br>
+                                Total Price
                             {% endif %}  
                             </td>
                             <td class="text-right">
                             <small class="text-muted mono"> {{ item.price  }}</small>
                                 {% if item.listextras is defined and item.listextras is not empty %} 
-                                {% for extra in item.listextras %}
+                                    {% for extra in item.listextras %}
+                                        <br/>
+                                        <small class="text-muted">{{ extra.price }}</small>
+                                    {% endfor %}
                                     <br/>
-                                    <small class="text-muted">{{ extra.price }}</small>
-                                {% endfor %}
+                                     <strong class="mono">{{ item.totalPrice }}</strong>
                             {% endif %}  
                             </td>
                         </tr>    

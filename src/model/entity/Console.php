@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace Tracktik\Model\Entity;
 
 use Tracktik\Model\Abstracts\ElectronicItem;
@@ -25,9 +26,13 @@ class Console extends ElectronicItem implements ExtraItem, \JsonSerializable
         return true;
     }
 
-    public function setListExtras(ElectronicItem $extraItem)
+    public function addListExtras(ElectronicItem $extraItem)
     {
         $this->listExtras[] = $extraItem;
+    }
+    public function setListExtras($listExtras)
+    {
+        $this->listExtras = $listExtras;
     }
     public function getListExtras(): array
     {
@@ -38,7 +43,7 @@ class Console extends ElectronicItem implements ExtraItem, \JsonSerializable
     {
         $this->totalPrice = $totalPrice;
     }
-    public function getTotalPrice()
+    public function getTotalPrice():float
     {
         return $this->totalPrice;
     }
@@ -48,7 +53,8 @@ class Console extends ElectronicItem implements ExtraItem, \JsonSerializable
         return [
                  "type"=> $this->getType(),
                  "extras"=>$this->getListExtras(),
-                 "price" => $this->getPrice()
+                 "price" => $this->getPrice(),
+                 "total_price"=>$this->getTotalPrice()
         ];
     }
 }

@@ -35,35 +35,6 @@ class PurchaseItem
 
     public function getItems(Request $request, Response $response) :Response
     {
-        $purchasedItems = FunctionsTrait::getPurchasedItems();
-        die();
-
-        $televisionOne = Purchase::television(202.54);
-        $televisionOne->setExtras(2);
-        $televisionOne->setListExtras(Purchase::controller(10.99, 'remote'));
-        $televisionOne->setListExtras(Purchase::controller(10.99, 'remote'));
-
-        $televisionTwo = Purchase::television(430.95);
-        $televisionTwo->setExtras(1);
-        $televisionTwo->setListExtras(Purchase::controller(12.50, 'remote'));
-
-        $console = Purchase::console(200.45);
-        $console->setListExtras(Purchase::controller(7.89, 'remote'));
-        $console->setListExtras(Purchase::controller(7.89, 'remote'));
-        $console->setListExtras(Purchase::controller(9.99, 'wired'));
-        $console->setListExtras(Purchase::controller(9.99, 'wired'));
-
-        $items = [
-                    $televisionOne,
-                    $televisionTwo,
-                    $console,
-                    Purchase::microwave(123.99),
-                ];
-
-        $sortedItems = Purchase::getSortedItems($items, 'price');
-        $totalPrice = Purchase::getTotalPrice($sortedItems);
-        return $this->renderHtml(compact([
-                                "sortedItems","totalPrice"
-                              ]), $response);
+        return $this->renderHtml(FunctionsTrait::getPurchasedItems(), $response);
     }
 }
