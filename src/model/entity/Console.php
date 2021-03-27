@@ -4,12 +4,14 @@ namespace Tracktik\Model\Entity;
 use Tracktik\Model\Abstracts\ElectronicItem;
 use Tracktik\Model\Interfaces\ExtraItem;
 
-class Console extends ElectronicItem implements ExtraItem,\JsonSerializable
+class Console extends ElectronicItem implements ExtraItem, \JsonSerializable
 {
-     /**
-     * @var array
-     */
+    /**
+    * @var array
+    */
     private $listExtras;
+
+    private $totalPrice;
 
     public function __construct()
     {
@@ -27,18 +29,26 @@ class Console extends ElectronicItem implements ExtraItem,\JsonSerializable
     {
         $this->listExtras[] = $extraItem;
     }
-
     public function getListExtras(): array
     {
         return $this->listExtras;
     }
+
+    public function setTotalPrice(float $totalPrice)
+    {
+        $this->totalPrice = $totalPrice;
+    }
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
     
-    public function JsonSerialize(){
-    
-    	return [
-    		     "type"=> $this->getType(),
-		         "extras"=>$this->getListExtras(),
-		         "price" => $this->getPrice()
-	    ];
+    public function JsonSerialize()
+    {
+        return [
+                 "type"=> $this->getType(),
+                 "extras"=>$this->getListExtras(),
+                 "price" => $this->getPrice()
+        ];
     }
 }

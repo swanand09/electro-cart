@@ -12,6 +12,8 @@ use DI\Container;
 use Tracktik\Controller\PurchaseItem as Controller_PurchaseItem;
 use Tracktik\Controller\ApiPurchaseItem as Controller_ApiPurchaseItem;
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__. '/../');
+$dotenv->load();
 
 // Create Container
 $container = new Container();

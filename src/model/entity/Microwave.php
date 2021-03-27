@@ -15,12 +15,12 @@ class Microwave extends ElectronicItem implements \JsonSerializable
     {
         return true;
     }
-	
-	public function JsonSerialize(){
-		
-		return [
-			"type"=> $this->getType(),
-			"price" => $this->getPrice()
-		];
-	}
+    
+    public function JsonSerialize()
+    {
+        return [
+            "type"=> $this->getType(),
+            "price" => $this->getPrice()
+        ];
+    }
 }

@@ -35,7 +35,7 @@ class Purchase
         return $microwave;
     }
 
-    public static function controller(float $price,string $wired): Controller
+    public static function controller(float $price, string $wired): Controller
     {
         $controller = new Controller();
         $controller->setPrice($price);

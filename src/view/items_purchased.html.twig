@@ -1,68 +1,51 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
-    {# <ul>
-    {% for item in items.sortedItems %}
-        <li><b>{{ item.type ~ ' | $'~ item.price }}</b></li>
-            {% if item.listextras is defined and item.listextras is not empty %} 
-                <ul>
-                {% for extra in item.listextras %}
-                    <li> ({{ loop.index }}) {{ extra.type  ~ ' | '~ extra.wired  }}</li>
-                {% endfor %}
-                </ul>    
-            {% endif %}  
-    {% endfor %}
-</ul>
-<p><b>Total Price: </b><i>${{ items.totalPrice }}</i></p> #}
-
-
-
 <div class="container invoice">
-  
-  <div class="invoice-body">
+    <div class="invoice-body">
         <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Electronic Items</h3>
-      </div>
-      <table class="table table-bordered table-condensed">
-        <thead>
-          <tr>
-            <th>Item / Details</th>
-            
-            <th class="text-center colfix">Cost($)</th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for item in items.sortedItems %}
+            <div class="panel-heading">
+                <h3 class="panel-title">Electronic Items</h3>
+            </div>
+            <table class="table table-bordered table-condensed">
+                <thead>
                 <tr>
-                    <td>{{ item.type }}
-                    {% if item.listextras is defined and item.listextras is not empty %} 
-                        {% for extra in item.listextras %}
-                            <br/>
-                             <small class="text-muted">({{ loop.index }}) {{ extra.wired  ~ ' '~ extra.type }}</small>
-                        {% endfor %}
-                    {% endif %}  
-                    </td>
-                    <td class="text-right">
-                       <small class="text-muted mono"> {{ item.price  }}</small>
-                        {% if item.listextras is defined and item.listextras is not empty %} 
-                        {% for extra in item.listextras %}
-                            <br/>
-                             <small class="text-muted">{{ extra.price }}</small>
-                        {% endfor %}
-                    {% endif %}  
-                    </td>
-                </tr>    
-            {% endfor %} 
-            <tr>
-                <td style="border-width: 2px 0 0px;">Total Price</td>
-                <td style="border-width: 2px 0 0px;">
-                    <strong class="mono">${{ items.totalPrice }}</strong>
-                </td>
-            </tr>
-        </tbody>
-      </table>
+                    <th>Item / Details</th>
+                    
+                    <th class="text-center colfix">Cost($)</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for item in items.sortedItems %}
+                        <tr>
+                            <td>{{ item.type }}
+                            {% if item.listextras is defined and item.listextras is not empty %} 
+                                {% for extra in item.listextras %}
+                                    <br/>
+                                    <small class="text-muted">({{ loop.index }}) {{ extra.wired  ~ ' '~ extra.type }}</small>
+                                {% endfor %}
+                            {% endif %}  
+                            </td>
+                            <td class="text-right">
+                            <small class="text-muted mono"> {{ item.price  }}</small>
+                                {% if item.listextras is defined and item.listextras is not empty %} 
+                                {% for extra in item.listextras %}
+                                    <br/>
+                                    <small class="text-muted">{{ extra.price }}</small>
+                                {% endfor %}
+                            {% endif %}  
+                            </td>
+                        </tr>    
+                    {% endfor %} 
+                    <tr>
+                        <td style="border-width: 2px 0 0px;">Grand Total Price</td>
+                        <td style="border-width: 2px 0 0px;">
+                            <strong class="mono">${{ items.totalPrice }}</strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 </div>
 
 {% endblock %}

@@ -11,6 +11,11 @@ class Television extends ElectronicItem implements ExtraItem, \JsonSerializable
      */
     private $listExtras;
 
+    /**
+     * @var string
+     */
+    private $make;
+
     public function __construct()
     {
         $this->setType(self::ELECTRONIC_ITEM_TELEVISION);
@@ -30,14 +35,23 @@ class Television extends ElectronicItem implements ExtraItem, \JsonSerializable
     {
         return $this->listExtras;
     }
-	
-	public function JsonSerialize(){
-		
-		return [
-			"type"=> $this->getType(),
-			"extras"=>$this->getListExtras(),
-			"price" => $this->getPrice()
-		];
-	}
 
+    public function setMake(string $make)
+    {
+        $this->make = $make;
+    }
+    public function getMake()
+    {
+        return $this->make;
+    }
+
+    
+    public function JsonSerialize()
+    {
+        return [
+            "type"=> $this->getType(),
+            "extras"=>$this->getListExtras(),
+            "price" => $this->getPrice()
+        ];
+    }
 }

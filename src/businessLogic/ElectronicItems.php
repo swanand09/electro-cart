@@ -6,10 +6,10 @@ use Tracktik\Model\Abstracts\ElectronicItem as Abstract_ElectronicItem;
 
 class ElectronicItems
 {
-	
-	/**
-	 * @var array
-	 */
+    
+    /**
+     * @var array
+     */
     private $items = array();
     
     public function __construct(array $items)
@@ -18,11 +18,11 @@ class ElectronicItems
     }
     
     
-	/**
-	 * Returns the items depending on the sorting type requested
-	 * @param $type
-	 * @return array
-	 */
+    /**
+     * Returns the items depending on the sorting type requested
+     * @param $type
+     * @return array
+     */
     public function getSortedItems($type):array
     {
         $sorted = array();
