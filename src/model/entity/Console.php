@@ -12,6 +12,9 @@ class Console extends ElectronicItem implements ExtraItem, \JsonSerializable
     */
     private $listExtras;
 
+    /**
+     * @var float 
+     */
     private $totalPrice;
 
     public function __construct()

@@ -10,5 +10,14 @@ interface ExtraItem
      */
     public function getListExtras();
     
-    public function setListExtras(ElectronicItem $extraItem);
+    public function setListExtras(array $extraItems);
+
+    public function addListExtras(ElectronicItem $extraItem);
+
+    public function setTotalPrice(float $totalPrice);
+
+    /**
+     * @return float
+     */
+    public function getTotalPrice();
 }
