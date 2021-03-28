@@ -9,7 +9,6 @@ use Tracktik\BusinessLogic\Factory\Purchase;
 
 abstract class AppController implements Interface_AppController
 {
-
     abstract protected function renderContent(array $itemBought, Response $response);
 
     public function getPurchasedItems(Request $request, Response $response) :Response

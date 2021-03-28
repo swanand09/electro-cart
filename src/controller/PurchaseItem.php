@@ -48,5 +48,4 @@ final class PurchaseItem extends Abstract_AppController
         $this->template =  'console_purchased.html.twig';
         return parent::getConsoleBought($request, $response);
     }
-    
 }

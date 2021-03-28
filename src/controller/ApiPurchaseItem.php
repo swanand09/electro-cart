@@ -9,7 +9,6 @@ use Tracktik\Controller\Abstracts\AppController as Abstract_AppController;
 
 final class ApiPurchaseItem extends Abstract_AppController
 {
-    
     protected function renderContent(array $itemBought, Response $response) :Response
     {
         try {

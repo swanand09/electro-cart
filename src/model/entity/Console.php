@@ -13,7 +13,7 @@ final class Console extends ElectronicItem implements ExtraItem, \JsonSerializab
     private $listExtras;
 
     /**
-     * @var float 
+     * @var float
      */
     private $totalPrice;
 

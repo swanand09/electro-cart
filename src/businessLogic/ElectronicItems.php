@@ -47,7 +47,7 @@ final class ElectronicItems
                 return $item->getType() == $type;
             };
             
-           return array_values(array_filter($this->items, $callback));
+            return array_values(array_filter($this->items, $callback));
         }
         
         return [];
