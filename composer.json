@@ -10,7 +10,6 @@
     "require": {
         "slim/slim": "4.*",
         "slim/psr7": "^1.3",
-        "phpunit/phpunit": "^8.5",
         "slim/twig-view": "^3.2",
         "php-di/php-di": "^6.3",
         "vlucas/phpdotenv": "^5.3"
@@ -34,7 +33,8 @@
             "php": "7.4"
         },        
         "optimize-autoloader": true        
-    }    
-
-
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }

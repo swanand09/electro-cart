@@ -5,11 +5,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use Tracktik\BusinessLogic\Factory\Purchase;
-use Tracktik\BusinessLogic\FunctionsTrait;
 
 class ApiPurchaseItem
 {
-    use FunctionsTrait;
     
     private function renderJson($itemsBought, Response $response) :Response
     {
@@ -34,6 +32,6 @@ class ApiPurchaseItem
 
     public function apiGetItems(Request $request, Response $response) :Response
     {
-        return $this->renderJson(FunctionsTrait::getPurchasedItems(), $response);
+        return $this->renderJson(Purchase::getPurchasedItems(), $response);
     }
 }

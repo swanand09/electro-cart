@@ -4,7 +4,7 @@ namespace Tracktik\Model\Entity;
 
 use Tracktik\Model\Abstracts\ElectronicItem;
 
-class Microwave extends ElectronicItem implements \JsonSerializable
+final class Microwave extends ElectronicItem implements \JsonSerializable
 {
     public function __construct()
     {

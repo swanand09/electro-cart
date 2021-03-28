@@ -4,7 +4,7 @@ namespace  Tracktik\BusinessLogic;
 
 use Tracktik\Model\Abstracts\ElectronicItem as Abstract_ElectronicItem;
 
-class ElectronicItems
+final class ElectronicItems
 {
     
     /**

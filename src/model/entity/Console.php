@@ -5,7 +5,7 @@ namespace Tracktik\Model\Entity;
 use Tracktik\Model\Abstracts\ElectronicItem;
 use Tracktik\Model\Interfaces\ExtraItem;
 
-class Console extends ElectronicItem implements ExtraItem, \JsonSerializable
+final class Console extends ElectronicItem implements ExtraItem, \JsonSerializable
 {
     /**
     * @var array

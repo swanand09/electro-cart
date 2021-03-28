@@ -6,14 +6,14 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use Tracktik\BusinessLogic\Factory\Purchase;
-use Tracktik\BusinessLogic\FunctionsTrait;
 use Slim\Views\Twig;
 use DI\Container;
 
 class PurchaseItem
 {
-    use FunctionsTrait;
-
+    /**
+     * @var Twig
+     */
     private $view;
 
     public function __construct(Container $container)
@@ -35,6 +35,6 @@ class PurchaseItem
 
     public function getItems(Request $request, Response $response) :Response
     {
-        return $this->renderHtml(FunctionsTrait::getPurchasedItems(), $response);
+        return $this->renderHtml(Purchase::getPurchasedItems(), $response);
     }
 }
