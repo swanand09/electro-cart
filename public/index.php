@@ -40,6 +40,8 @@ $app->addErrorMiddleware(true, false, false);
 
 $app->get('/api/list-items-purchase/', Controller_ApiPurchaseItem::class . ':getPurchasedItems');
 
+$app->get('/api/console-bought/', Controller_ApiPurchaseItem::class  . ':getConsoleBought');
+
 $app->get('/', Controller_PurchaseItem::class  . ':getPurchasedItems');
 
 $app->get('/console-bought/', Controller_PurchaseItem::class  . ':getConsoleBought');
