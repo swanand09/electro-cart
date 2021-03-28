@@ -1,0 +1,35 @@
+body{
+    background:#EEE;
+    /* font-size:0.9em !important; */
+  }
+  .invoice{
+    width:670px !important;
+    margin:50px auto;
+    .invoice-header{
+      padding:25px 25px 15px;
+      h1{
+        margin:0
+      }
+    }
+    .invoice-body{
+      border-radius:10px;
+      padding:25px;
+      background:#FFF;
+    }
+  }
+ 
+  .colfix{
+    width:12%;
+  }
+  .mono{
+    font-family:monospace;
+  }
+  .priceTxt{
+    float:right;
+  }
+  .itemText{
+    text-transform:capitalize;
+  }
+  .colBorder{
+    border-width: 2px 0 0px;
+  }

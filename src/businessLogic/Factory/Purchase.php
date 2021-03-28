@@ -98,4 +98,13 @@ final class Purchase
 
         return compact(["sortedItems", "totalPrice"]);
     }
+
+    public static function getConsoleBought()
+    {
+        $purchasedItems =  self::getPurchasedItems();
+        
+        $electronicItems = new ElectronicItems($purchasedItems['sortedItems']);
+        
+        return $electronicItems->getItemsByType('console');
+    }
 }

@@ -4,8 +4,9 @@
     <div class="invoice-body">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Electronic Items</h3>
+                <h3 class="panel-title">Console Bought</h3>
             </div>
+
             <table class="table table-bordered table-condensed">
                 <thead>
                 <tr>
@@ -15,35 +16,32 @@
                 </tr>
                 </thead>
                 <tbody>
-                    {% for item in items.sortedItems %}
+                     {% for item in items %}
                         <tr>
                             <td class="itemText">{{ item.type }}
-                            {% if item.listextras is defined and item.listextras is not empty %} 
+                            {% if item.listextras is defined and item.listextras is not empty %}
                                 {% for extra in item.listextras %}
                                     <br/>
                                     <small class="text-muted">({{ loop.index }}) {{ extra.wired  ~ ' '~ extra.type }}</small>
                                 {% endfor %}
-                                <br>
-                                Total Price
-                            {% endif %}  
+                                
+                            {% endif %}
                             </td>
                             <td class="text-right">
                             <small class="text-muted mono priceTxt"> {{ item.price  }}</small>
-                                {% if item.listextras is defined and item.listextras is not empty %} 
+                                {% if item.listextras is defined and item.listextras is not empty %}
                                     {% for extra in item.listextras %}
                                         <br/>
                                         <small class="text-muted mono priceTxt">{{ extra.price }}</small>
                                     {% endfor %}
-                                    <br/>
-                                     <strong class="mono priceTxt">{{ item.totalPrice }}</strong>
-                            {% endif %}  
+                            {% endif %}
                             </td>
-                        </tr>    
-                    {% endfor %} 
+                        </tr>
+                    {% endfor %}
                     <tr>
-                        <td class="colBorder">Grand Total Price</td>
+                        <td class="colBorder">Total Price</td>
                         <td class="colBorder">
-                            <strong class="mono">${{ items.totalPrice }}</strong>
+                            <strong class="mono priceTxt">${{ items[0].totalPrice }}</strong>
                         </td>
                     </tr>
                 </tbody>

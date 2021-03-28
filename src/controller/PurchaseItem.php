@@ -5,26 +5,31 @@ namespace Tracktik\Controller;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-use Tracktik\BusinessLogic\Factory\Purchase;
 use Slim\Views\Twig;
 use DI\Container;
+use Tracktik\Controller\Abstracts\AppController as Abstract_AppController;
 
-class PurchaseItem
+final class PurchaseItem extends Abstract_AppController
 {
     /**
      * @var Twig
      */
     private $view;
 
+    /**
+     * @var string
+     */
+    private $template;
+
     public function __construct(Container $container)
     {
         $this->view = $container->get('view');
     }
 
-    private function renderHtml($itemsBought, Response $response) :Response
+    protected function renderContent($itemsBought, Response $response) :Response
     {
         try {
-            return $this->view->render($response, 'items_purchased.html.twig', ["items"=>$itemsBought]);
+            return $this->view->render($response, $this->template, ["items"=>$itemsBought]);
         } catch (\ErrorException $e) {
             $response->getBody()->write(json_encode(["error"=>["text"=>$e->getMessage()]]));
             return $response
@@ -32,9 +37,16 @@ class PurchaseItem
         }
     }
 
-
-    public function getItems(Request $request, Response $response) :Response
+    public function getPurchasedItems(Request $request, Response $response) :Response
     {
-        return $this->renderHtml(Purchase::getPurchasedItems(), $response);
+        $this->template =  'items_purchased.html.twig';
+        return parent::getPurchasedItems($request, $response);
     }
+
+    public function getConsoleBought(Request $request, Response $response) :Response
+    {
+        $this->template =  'console_purchased.html.twig';
+        return parent::getConsoleBought($request, $response);
+    }
+    
 }

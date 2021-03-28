@@ -5,18 +5,19 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 use Tracktik\BusinessLogic\Factory\Purchase;
+use Tracktik\Controller\Abstracts\AppController as Abstract_AppController;
 
-class ApiPurchaseItem
+final class ApiPurchaseItem extends Abstract_AppController
 {
     
-    private function renderJson($itemsBought, Response $response) :Response
+    protected function renderContent(array $itemBought, Response $response) :Response
     {
         try {
-            if (isset($itemsBought['error'])) {
-                throw new \ErrorException($itemsBought['error']);
+            if (isset($itemBought['error'])) {
+                throw new \ErrorException($itemBought['error']);
             }
             
-            $response->getBody()->write(json_encode($itemsBought, JSON_PRETTY_PRINT));
+            $response->getBody()->write(json_encode($itemBought, JSON_PRETTY_PRINT));
             return $response
                 ->withHeader('Content-Type', 'application/json')
                 ->withHeader('Access-Control-Allow-Origin', '*')
@@ -27,11 +28,5 @@ class ApiPurchaseItem
             return $response
                 ->withHeader('Content-Type', 'application/json');
         }
-    }
-
-
-    public function apiGetItems(Request $request, Response $response) :Response
-    {
-        return $this->renderJson(Purchase::getPurchasedItems(), $response);
     }
 }

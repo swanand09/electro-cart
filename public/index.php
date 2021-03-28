@@ -7,6 +7,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
+use Middlewares\TrailingSlash;
 use DI\Container;
 
 use Tracktik\Controller\PurchaseItem as Controller_PurchaseItem;
@@ -31,12 +32,16 @@ $container->set('view', function () {
 });
 $app = AppFactory::create();
 
+$app->add(new TrailingSlash(true));
+
 $app->add(TwigMiddleware::createFromContainer($app));
 
 $app->addErrorMiddleware(true, false, false);
 
-$app->get('/api/list-items-purchase/', Controller_ApiPurchaseItem::class . ':apiGetItems');
+$app->get('/api/list-items-purchase/', Controller_ApiPurchaseItem::class . ':getPurchasedItems');
 
-$app->get('/', Controller_PurchaseItem::class  . ':getItems');
+$app->get('/', Controller_PurchaseItem::class  . ':getPurchasedItems');
+
+$app->get('/console-bought/', Controller_PurchaseItem::class  . ':getConsoleBought');
 
 $app->run();
