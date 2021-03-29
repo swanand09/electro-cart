@@ -15,7 +15,7 @@
 │    └── businessLogic   
 ├── var/cache/twig      Twig cache files
 ├── vendor/             Reserved for composer
-├── .env                store environment variables
+├── .env                store environment variables e.g PURCHASED_ITEMS - dummy data for test
 ├── .gitignore          Git ignore rules
 └── composer.json       Project dependencies and autoloader
 └── phpunit.xml         Configuration of phpunit for unit testing
