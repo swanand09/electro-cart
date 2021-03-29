@@ -11,7 +11,12 @@ use Tracktik\Model\Entity\Controller;
 final class Purchase
 {
     use FunctionsTrait;
-
+    
+    /**
+     * initialise Television object with price
+     * @param float $price
+     * @return Television
+     */
     public static function television(float $price): Television
     {
         $television = new Television();
@@ -19,7 +24,12 @@ final class Purchase
 
         return $television;
     }
-   
+    
+    /**
+     * initialise Console object with price
+     * @param float $price
+     * @return Console
+     */
     public static function console(float $price): Console
     {
         $console = new Console();
@@ -27,7 +37,11 @@ final class Purchase
 
         return $console;
     }
-
+    
+    /**
+     * @param float $price
+     * @return Microwave
+     */
     public static function microwave(float $price): Microwave
     {
         $microwave = new Microwave();
@@ -35,7 +49,12 @@ final class Purchase
 
         return $microwave;
     }
-
+    
+    /**
+     * @param float $price
+     * @param string $wired
+     * @return Controller
+     */
     public static function controller(float $price, string $wired): Controller
     {
         $controller = new Controller();
@@ -44,13 +63,24 @@ final class Purchase
 
         return $controller;
     }
-
+    
+    /**
+     * Sort items
+     * @param array $items
+     * @param $sortType
+     * @return array
+     */
     public static function getSortedItems(array $items, $sortType): array
     {
         $electronicItems = new ElectronicItems($items);
         return $electronicItems->getSortedItems($sortType);
     }
-
+    
+    /**
+     * Calculate grand total price of sorted items
+     * @param array $sortedItems
+     * @return float
+     */
     public static function getTotalPrice(array $sortedItems): float
     {
         $totalPrice = 0.00;
@@ -63,8 +93,11 @@ final class Purchase
         }
         return $totalPrice;
     }
-
     
+    /**
+     * list all items details bought with extras
+     * @return array
+     */
     public static function getPurchasedItems(): array
     {
         $sortedItems = [];
@@ -86,7 +119,7 @@ final class Purchase
                 //Sort extras
                 $electronic->setListExtras(self::getSortedItems($electronic->getListExtras(), 'price'));
 
-                //Caculate Total Price
+                //Calculate Total Price
                 $electronic->setTotalPrice($electronic->getPrice() + self::getTotalPrice($electronic->getListExtras()));
             }
             array_push($sortedItems, $electronic);
@@ -100,7 +133,11 @@ final class Purchase
 
         return compact(["sortedItems", "totalPrice"]);
     }
-
+    
+    /**
+     * list console details with extras
+     * @return array
+     */
     public static function getConsoleBought() : array
     {
         $purchasedItems =  self::getPurchasedItems();

@@ -9,13 +9,16 @@ use Tracktik\Controller\Abstracts\AppController as Abstract_AppController;
 
 final class ApiPurchaseItem extends Abstract_AppController
 {
+    
+    /**
+     * render content in json format for api
+     * @param array $itemBought
+     * @param Response $response
+     * @return Response
+     */
     protected function renderContent(array $itemBought, Response $response) :Response
     {
         try {
-            if (isset($itemBought['error'])) {
-                throw new \ErrorException($itemBought['error']);
-            }
-            
             $response->getBody()->write(json_encode($itemBought, JSON_PRETTY_PRINT));
             return $response
                 ->withHeader('Content-Type', 'application/json')

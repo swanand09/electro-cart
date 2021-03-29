@@ -8,7 +8,7 @@ interface ExtraItem
     /**
      * @return array
      */
-    public function getListExtras();
+    public function getListExtras(): array;
     
     public function setListExtras(array $extraItems);
 
@@ -19,5 +19,5 @@ interface ExtraItem
     /**
      * @return float
      */
-    public function getTotalPrice();
+    public function getTotalPrice(): float;
 }

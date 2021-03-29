@@ -24,11 +24,20 @@ final class PurchaseItem extends Abstract_AppController
     {
         $this->view = $container->get('view');
     }
-
-    protected function renderContent($itemsBought, Response $response) :Response
+    
+    /**
+     * render content in twig template
+     * @param array $itemBought
+     * @param Response $response
+     * @return Response
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    protected function renderContent(array $itemBought, Response $response) :Response
     {
         try {
-            return $this->view->render($response, $this->template, ["items"=>$itemsBought]);
+            return $this->view->render($response, $this->template, ["items"=>$itemBought]);
         } catch (\ErrorException $e) {
             $response->getBody()->write(json_encode(["error"=>["text"=>$e->getMessage()]]));
             return $response

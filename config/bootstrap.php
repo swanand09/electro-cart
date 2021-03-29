@@ -32,6 +32,7 @@ $container->set('view', function () {
 });
 $app = AppFactory::create();
 
+//solve problem of slash at the endpoint of url
 $app->add(new TrailingSlash(true));
 
 $app->add(TwigMiddleware::createFromContainer($app));

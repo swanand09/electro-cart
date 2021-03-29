@@ -9,7 +9,7 @@ final class Television extends ElectronicItem implements ExtraItem, \JsonSeriali
     /**
      * @var array
      */
-    private array $listExtras;
+    private array $extraItems;
 
     private float $totalPrice;
 
@@ -18,23 +18,22 @@ final class Television extends ElectronicItem implements ExtraItem, \JsonSeriali
         $this->setType(self::ELECTRONIC_ITEM_TELEVISION);
     }
     
-    protected function maxExtras()
-    : bool
+    protected function maxExtras(): bool
     {
         return false;
     }
 
     public function addListExtras(ElectronicItem $extraItem)
     {
-        $this->listExtras[] = $extraItem;
+        $this->extraItems[] = $extraItem;
     }
-    public function setListExtras($listExtras)
+    public function setListExtras($extraItems)
     {
-        $this->listExtras = $listExtras;
+        $this->extraItems = $extraItems;
     }
     public function getListExtras(): array
     {
-        return $this->listExtras;
+        return $this->extraItems;
     }
 
     public function setTotalPrice(float $totalPrice)

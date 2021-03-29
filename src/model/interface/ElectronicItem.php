@@ -3,12 +3,12 @@ namespace Tracktik\Model\Interfaces;
 
 interface ElectronicItem
 {
-    public function getPrice();
-    public function setPrice($price);
-    public function getType();
-    public function setType($type);
-    public function getWired();
-    public function setWired($wired);
-    public function getExtras();
-    public function setExtras($extras);
+    public function getPrice(): float;
+    public function setPrice(float $price);
+    public function getType(): string;
+    public function setType(string $type);
+    public function getWired(): string;
+    public function setWired(string $wired);
+    public function getExtras(): int;
+    public function setExtras(int $extras);
 }

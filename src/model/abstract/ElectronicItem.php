@@ -16,7 +16,9 @@ abstract class ElectronicItem implements Interface_ElectronicItem
      */
     private $type;
     private $wired;
-    
+    /**
+     * @var int
+     */
     protected $extras;
 
     /**
@@ -54,7 +56,7 @@ abstract class ElectronicItem implements Interface_ElectronicItem
         $this->type = $type;
     }
 
-    public function getWired()
+    public function getWired(): string
     {
         return $this->wired;
     }

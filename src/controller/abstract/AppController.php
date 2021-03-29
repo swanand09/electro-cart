@@ -9,12 +9,22 @@ use Tracktik\BusinessLogic\Factory\Purchase;
 abstract class AppController implements Interface_AppController
 {
     abstract protected function renderContent(array $itemBought, Response $response);
-
+    
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return Response
+     */
     public function getPurchasedItems(Request $request, Response $response) :Response
     {
         return $this->renderContent(Purchase::getPurchasedItems(), $response);
     }
-
+    
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return Response
+     */
     public function getConsoleBought(Request $request, Response $response) :Response
     {
         return $this->renderContent(Purchase::getConsoleBought(), $response);
