@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 namespace Tracktik\Model\Entity;
 
 use Tracktik\Model\Abstracts\ElectronicItem;
@@ -10,14 +9,9 @@ final class Television extends ElectronicItem implements ExtraItem, \JsonSeriali
     /**
      * @var array
      */
-    private $listExtras;
+    private array $listExtras;
 
-    private $totalPrice;
-
-    /**
-     * @var string
-     */
-    private $make;
+    private float $totalPrice;
 
     public function __construct()
     {
@@ -25,6 +19,7 @@ final class Television extends ElectronicItem implements ExtraItem, \JsonSeriali
     }
     
     protected function maxExtras()
+    : bool
     {
         return false;
     }
@@ -51,14 +46,7 @@ final class Television extends ElectronicItem implements ExtraItem, \JsonSeriali
         return $this->totalPrice;
     }
 
-    public function setMake(string $make)
-    {
-        $this->make = $make;
-    }
-    public function getMake()
-    {
-        return $this->make;
-    }
+    
 
     
     public function JsonSerialize()

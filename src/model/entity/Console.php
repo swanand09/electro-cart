@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 namespace Tracktik\Model\Entity;
 
 use Tracktik\Model\Abstracts\ElectronicItem;
@@ -10,12 +9,12 @@ final class Console extends ElectronicItem implements ExtraItem, \JsonSerializab
     /**
     * @var array
     */
-    private $listExtras;
+    private array $listExtras;
 
     /**
      * @var float
      */
-    private $totalPrice;
+    private float $totalPrice;
 
     public function __construct()
     {

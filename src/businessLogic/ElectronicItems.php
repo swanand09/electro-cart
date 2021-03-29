@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 namespace  Tracktik\BusinessLogic;
 
 use Tracktik\Model\Abstracts\ElectronicItem as Abstract_ElectronicItem;
@@ -10,7 +9,7 @@ final class ElectronicItems
     /**
      * @var array
      */
-    private $items = array();
+    private array $items = array();
     
     public function __construct(array $items)
     {
@@ -37,6 +36,7 @@ final class ElectronicItems
     }
     
     /**
+     * get Item from list of items by type(console,television,microwave)
      * @param string $type
      * @return array
      */

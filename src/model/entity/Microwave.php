@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 namespace Tracktik\Model\Entity;
 
 use Tracktik\Model\Abstracts\ElectronicItem;
@@ -13,6 +12,7 @@ final class Microwave extends ElectronicItem implements \JsonSerializable
     }
     
     protected function maxExtras()
+    : bool
     {
         return true;
     }

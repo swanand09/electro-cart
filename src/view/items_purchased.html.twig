@@ -17,7 +17,7 @@
                 <tbody>
                     {% for item in items.sortedItems %}
                         <tr>
-                            <td class="itemText">{{ item.type }}
+                            <td class="itemText">{{ item.type }}, {{ item.make }}
                             {% if item.listextras is defined and item.listextras is not empty %} 
                                 {% for extra in item.listextras %}
                                     <br/>
@@ -35,7 +35,7 @@
                                         <small class="text-muted mono priceTxt">{{ extra.price }}</small>
                                     {% endfor %}
                                     <br/>
-                                     <strong class="mono priceTxt">{{ item.totalPrice }}</strong>
+                                     <strong class="mono priceTxt">{{ item.totalPrice | number_format(2) }}</strong>
                             {% endif %}  
                             </td>
                         </tr>    
@@ -43,7 +43,7 @@
                     <tr>
                         <td class="colBorder">Grand Total Price</td>
                         <td class="colBorder">
-                            <strong class="mono">${{ items.totalPrice }}</strong>
+                            <strong class="mono">${{ items.totalPrice | number_format(2) }}</strong>
                         </td>
                     </tr>
                 </tbody>

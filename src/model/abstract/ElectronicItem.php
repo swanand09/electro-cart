@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 namespace Tracktik\Model\Abstracts;
 
 use Tracktik\Model\Interfaces\ElectronicItem as Interface_ElectronicItem;
@@ -19,6 +18,11 @@ abstract class ElectronicItem implements Interface_ElectronicItem
     private $wired;
     
     protected $extras;
+
+    /**
+    * @var string
+    */
+    private $make;
     
     const ELECTRONIC_ITEM_TELEVISION = 'television';
     const ELECTRONIC_ITEM_CONSOLE = 'console';
@@ -57,6 +61,15 @@ abstract class ElectronicItem implements Interface_ElectronicItem
     public function setWired($wired)
     {
         $this->wired = $wired;
+    }
+
+    public function setMake(string $make)
+    {
+        $this->make = $make;
+    }
+    public function getMake(): string
+    {
+        return $this->make;
     }
     
     public function getExtras():int

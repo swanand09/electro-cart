@@ -1,7 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 namespace  Tracktik\BusinessLogic\Factory;
 
 use Tracktik\BusinessLogic\ElectronicItems;
@@ -68,13 +65,18 @@ final class Purchase
     }
 
     
-    public static function getPurchasedItems()
+    public static function getPurchasedItems(): array
     {
         $sortedItems = [];
-
+        
         foreach (FunctionsTrait::dummyData() as $item) {
             $electronicType = $item->type;
             $electronic = self::$electronicType($item->price);
+    
+            if (isset($item->make)) {
+                $electronic->setMake($item->make);
+            }
+            
             if (isset($item->extras)) {
                 $electronic->setExtras(count($item->extras));
                 foreach ($item->extras as $extra) {
@@ -99,7 +101,7 @@ final class Purchase
         return compact(["sortedItems", "totalPrice"]);
     }
 
-    public static function getConsoleBought()
+    public static function getConsoleBought() : array
     {
         $purchasedItems =  self::getPurchasedItems();
         
