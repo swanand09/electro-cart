@@ -10,24 +10,28 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
 use Slim\Factory\AppFactory;
-use Middlewares\TrailingSlash;
+use Slim\App;
 use Slim\Psr7\Factory\ServerRequestFactory;
+use Slim\Views\Twig;
+use Slim\Views\TwigMiddleware;
+use Middlewares\TrailingSlash;
 use UnexpectedValueException;
-
+use Tracktik\Controller\PurchaseItem as Controller_PurchaseItem;
+use Tracktik\Controller\ApiPurchaseItem as Controller_ApiPurchaseItem;
 /**
  * App Test Trait.
  */
-trait AppTestTrait
+trait TestTrait
 {
     /**
      * @var Container
      */
-    protected $container;
+    protected Container $container;
 
     /**
      * @var App
      */
-    protected $app;
+    protected App $app;
 
     /**
      * Bootstrap app.
@@ -38,13 +42,36 @@ trait AppTestTrait
      */
     protected function setUp(): void
     {
+	    $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__. '/../');
+	    $dotenv->load();
         $this->container = new Container();
         AppFactory::setContainer($this->container);
-
+	
+	    $this->container->set('view', function () {
+		    $twig =  Twig::create(__DIR__ . '/../src/view', [
+			    'cache_enabled' => false,
+			    'cache_path' => __DIR__ . '/../var/cache/twig',
+			    'debug'=> true
+		    ]);
+		    $twig->addExtension(new \Twig\Extension\DebugExtension());
+		    return $twig;
+	    });
         
         $this->app = AppFactory::create();
 
         $this->app->add(new TrailingSlash(true));
+	    $this->app->add(TwigMiddleware::createFromContainer($this->app));
+	
+	
+	    $this->app->addErrorMiddleware(true, false, false);
+	
+	    $this->app->get('/api/list-items-purchase/', Controller_ApiPurchaseItem::class . ':getPurchasedItems');
+	
+	    $this->app->get('/api/console-bought/', Controller_ApiPurchaseItem::class  . ':getConsoleBought');
+	
+	    $this->app->get('/', Controller_PurchaseItem::class  . ':getPurchasedItems');
+	
+	    $this->app->get('/console-bought/', Controller_PurchaseItem::class  . ':getConsoleBought');
     }
 
     /**
