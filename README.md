@@ -24,7 +24,6 @@
 
 ## Requirements
 - PHP >= 7.4 
-- Mysql >= 5.03
 - Composer
 - Nginx
 
