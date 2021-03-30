@@ -20,9 +20,9 @@ final class PurchaseItem extends Abstract_AppController
      */
     private $template;
 
-     /**
-     * @var string
-     */
+    /**
+    * @var string
+    */
     private $title;
 
     public function __construct(Container $container)
@@ -52,8 +52,8 @@ final class PurchaseItem extends Abstract_AppController
 
     public function getPurchasedItems(Request $request, Response $response) :Response
     {
-        $this->template =  'items_purchased.html.twig';
-        $this->title = 'electronic items';
+        $this->template = 'items_purchased.html.twig';
+        $this->title    = 'electronic items';
         return parent::getPurchasedItems($request, $response);
     }
 
