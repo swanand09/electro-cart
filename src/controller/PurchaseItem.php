@@ -58,7 +58,7 @@ final class PurchaseItem extends Abstract_AppController
 
     public function getPurchasedItem(Request $request, Response $response) :Response
     {
-        if(is_null($request->getAttribute('session'))){
+        if(!isset($request->getQueryParams()['error'])){
 
             $type = $request->getQueryParams()['type'];
             $this->template = 'item_purchased.html.twig';
