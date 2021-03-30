@@ -2,6 +2,7 @@
 namespace  Tracktik\BusinessLogic\Factory;
 
 use Tracktik\BusinessLogic\ElectronicItems;
+use Tracktik\Model\Abstracts\ElectronicItem as Abstract_ElectronicItem;
 use Tracktik\BusinessLogic\FunctionsTrait;
 use Tracktik\Model\Entity\Television;
 use Tracktik\Model\Entity\Console;
@@ -138,12 +139,16 @@ final class Purchase
      * list console details with extras
      * @return array
      */
-    public static function getConsoleBought() : array
+    public static function getPurchasedItem($type) : array
     {
-        $purchasedItems =  self::getPurchasedItems();
+        if (in_array($type, Abstract_ElectronicItem::$types)) {
+            $purchasedItems =  self::getPurchasedItems();
         
-        $electronicItems = new ElectronicItems($purchasedItems['sortedItems']);
+            $electronicItems = new ElectronicItems($purchasedItems['sortedItems']);
         
-        return $electronicItems->getItemsByType('console');
+            return $electronicItems->getItemsByType($type);
+        }
+        throw new \ErrorException("Please pass either '".Abstract_ElectronicItem::ELECTRONIC_ITEM_CONSOLE."', '".Abstract_ElectronicItem::ELECTRONIC_ITEM_TELEVISION."' or '".Abstract_ElectronicItem::ELECTRONIC_ITEM_MICROWAVE."' as type!");
     }
+
 }

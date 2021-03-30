@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<div class="container">
+    <div class="notification is-danger">
+        <div class="icon-text">
+          <span class="icon has-text-info">
+            <i class="fas fa-info-circle"></i>
+          </span>
+          <span> {{ errorMsg }}</span>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

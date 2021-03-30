@@ -83,11 +83,17 @@ server {
 
 ## API Endpoints:
 - Question1 : **http://tracktik.test/api/list-items-purchase/**
-- Question2: **https://tracktik.test/api/console-bought/**
+- Question2: 
+  - **https://tracktik.test/api/item-purchase/?type=console**
+  - **https://tracktik.test/api/item-purchase/?type=microwave**
+  - **https://tracktik.test/api/item-purchase/?type=television**
 
 ## Answers to questions
 - Question1 : **https://tracktik.test**
-- Question2: **https://tracktik.test/console-bought/**
+- Question2: 
+  - **https://tracktik.test/item-purchase/?type=console**
+  - **https://tracktik.test/item-purchase/?type=microwave**
+  - **https://tracktik.test/item-purchase/?type=television**
   
 ## Unit Testing 
 - run `vendor/bin/phpunit`  

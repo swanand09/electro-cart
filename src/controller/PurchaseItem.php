@@ -24,6 +24,11 @@ final class PurchaseItem extends Abstract_AppController
     * @var string
     */
     private $title;
+	
+	/**
+	 * @var string
+	 */
+    private $error='';
 
     public function __construct(Container $container)
     {
@@ -41,13 +46,7 @@ final class PurchaseItem extends Abstract_AppController
      */
     protected function renderContent(array $itemBought, Response $response) :Response
     {
-        try {
-            return $this->view->render($response, $this->template, ["items"=>$itemBought,'title'=>$this->title]);
-        } catch (\ErrorException $e) {
-            $response->getBody()->write(json_encode(["error"=>["text"=>$e->getMessage()]]));
-            return $response
-                ->withHeader('Content-Type', 'application/json');
-        }
+       return $this->view->render($response, $this->template, ["items"=>$itemBought,'title'=>$this->title,'errorMsg'=>$this->error]);
     }
 
     public function getPurchasedItems(Request $request, Response $response) :Response
@@ -57,10 +56,18 @@ final class PurchaseItem extends Abstract_AppController
         return parent::getPurchasedItems($request, $response);
     }
 
-    public function getConsoleBought(Request $request, Response $response) :Response
+    public function getPurchasedItem(Request $request, Response $response) :Response
     {
-        $this->template = 'console_purchased.html.twig';
-        $this->title    = 'console items';
-        return parent::getConsoleBought($request, $response);
+        if(is_null($request->getAttribute('session'))){
+
+            $type = $request->getQueryParams()['type'];
+            $this->template = 'item_purchased.html.twig';
+            $this->title    = "{$type} items";
+            return parent::getPurchasedItem($request, $response);
+        }else{
+
+            return $this->view->render($response, 'error.html.twig', ['title'=>'Error','errorMsg'=>$request->getQueryParams()['error']]);
+        }
     }
+    
 }

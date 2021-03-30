@@ -16,7 +16,7 @@ class TestController extends TestCase
     {
         
         // Create request with method and url
-        $request = $this->createRequest('GET', '/console-bought/');
+        $request = $this->createRequest('GET', '/item-purchase/?type=console');
 
         // Make request and fetch response
         $response = $this->app->handle($request);
@@ -72,7 +72,7 @@ class TestController extends TestCase
     {
         
         // Create request with method and url
-        $request = $this->createRequest('GET', '/api/console-bought/');
+        $request = $this->createRequest('GET', '/api/item-purchase/?type=console');
         
         // Make request and fetch response
         $response = $this->app->handle($request);

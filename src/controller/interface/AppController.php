@@ -7,5 +7,5 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 interface AppController
 {
     public function getPurchasedItems(Request $request, Response $response);
-    public function getConsoleBought(Request $request, Response $response);
+    public function getPurchasedItem(Request $request, Response $response);
 }
