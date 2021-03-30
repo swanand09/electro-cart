@@ -81,14 +81,15 @@ server {
     - https://tracktik.test/api/console-bought/
 
 
-## API Endpoints:
+## Answers to questions
+### API Endpoints:
 - Question1 : **http://tracktik.test/api/list-items-purchase/**
 - Question2: 
   - **https://tracktik.test/api/item-purchase/?type=console**
   - **https://tracktik.test/api/item-purchase/?type=microwave**
   - **https://tracktik.test/api/item-purchase/?type=television**
 
-## Answers to questions
+### Urls:
 - Question1 : **https://tracktik.test**
 - Question2: 
   - **https://tracktik.test/item-purchase/?type=console**
