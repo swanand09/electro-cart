@@ -89,7 +89,7 @@ server {
 - Question2: **https://tracktik.test/console-bought/**
   
 ## Unit Testing 
-- run vendor/bin/phpunit  
+- run `vendor/bin/phpunit`  
 - tests/TestController.php -> routes test cases
 - tests/TestFactoryPurchase.php -> test factory functions(src/businessLogic/factory) against model entities(src/model/entities)
 
