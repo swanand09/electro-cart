@@ -59,8 +59,8 @@ final class PurchaseItem extends Abstract_AppController
 
     public function getConsoleBought(Request $request, Response $response) :Response
     {
-        $this->template =  'console_purchased.html.twig';
-        $this->title = 'console items';
+        $this->template = 'console_purchased.html.twig';
+        $this->title    = 'console items';
         return parent::getConsoleBought($request, $response);
     }
 }
