@@ -72,6 +72,7 @@ server {
 ```
 
 - add ``` 127.0.0.1	tracktik.test ``` to /etc/hosts
+- run `nginx.restart`
 - Go to project folder and do `composer install`
 - access these urls on the browser:
     - https://tracktik.test
