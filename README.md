@@ -84,9 +84,12 @@ server {
 - Question1 : **http://tracktik.test/api/list-items-purchase/**
 - Question2: **https://tracktik.test/api/console-bought/**
 
-## Url to replay to questions
+## Answers to questions
 - Question1 : **https://tracktik.test**
 - Question2: **https://tracktik.test/console-bought/**
+  
+## Unit Testing 
+- run vendor/bin/phpunit  
 
 
 
