@@ -19,6 +19,9 @@ final class ApiPurchaseItem extends Abstract_AppController
     protected function renderContent(array $itemBought, Response $response) :Response
     {
         try {
+        	if(isset($itemBought['error'])){
+        		throw new \ErrorException($itemBought['error']);
+	        }
             $response->getBody()->write(json_encode($itemBought, JSON_PRETTY_PRINT));
             return $response
                 ->withHeader('Content-Type', 'application/json')
@@ -31,4 +34,21 @@ final class ApiPurchaseItem extends Abstract_AppController
                 ->withHeader('Content-Type', 'application/json');
         }
     }
+	
+	/**
+	 * list electronics bought by type
+	 * @param Request $request
+	 * @param Response $response
+	 * @return Response
+	 */
+	public function getPurchasedItem(Request $request, Response $response) :Response
+	{
+		if(!isset($request->getQueryParams()['error'])){
+			
+			return parent::getPurchasedItem($request, $response);
+		}else{
+			
+			return $this->renderContent(['error'=>$request->getQueryParams()['error']], $response);
+		}
+	}
 }

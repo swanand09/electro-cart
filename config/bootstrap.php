@@ -44,9 +44,9 @@ $middlewareHandleReq = function  (Request $request, RequestHandler $handler) use
 		}
         throw new \ErrorException("Please add a non empty parameter called 'type'!");
     }catch(\ErrorException $e){
-		$response = new \Slim\Psr7\Response();
-    	$response->getBody()->write($e->getMessage());
-    	return $response;
+    	$newRequest = $request->withQueryParams(["error"=>$e->getMessage()]);
+	    return $handler->handle($newRequest);
+     
     }
 };
 

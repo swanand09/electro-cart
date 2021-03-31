@@ -48,14 +48,30 @@ final class PurchaseItem extends Abstract_AppController
     {
        return $this->view->render($response, $this->template, ["items"=>$itemBought,'title'=>$this->title,'errorMsg'=>$this->error]);
     }
-
+	
+	
+	/**
+	 * list all electronics bought
+	 * @param Request $request
+	 * @param Response $response
+	 * @return Response
+	 */
     public function getPurchasedItems(Request $request, Response $response) :Response
     {
         $this->template = 'items_purchased.html.twig';
         $this->title    = 'electronic items';
         return parent::getPurchasedItems($request, $response);
     }
-
+	
+	/**
+	 * list electronics bought by type
+	 * @param Request $request
+	 * @param Response $response
+	 * @return Response
+	 * @throws \Twig\Error\LoaderError
+	 * @throws \Twig\Error\RuntimeError
+	 * @throws \Twig\Error\SyntaxError
+	 */
     public function getPurchasedItem(Request $request, Response $response) :Response
     {
         if(!isset($request->getQueryParams()['error'])){
