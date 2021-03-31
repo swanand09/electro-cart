@@ -48,8 +48,6 @@ $middlewareHandleReq = function  (Request $request, RequestHandler $handler) use
     }catch(\ErrorException $e){
        
     	$newRequest = $request->withQueryParams(["error"=>$e->getMessage()]);
-	    //$newRequest = $newRequest->withUri(new \Slim\Psr7\Uri('https','tracktik.test',443,'/error/'),false);
-	
 	    $routeContext = RouteContext::fromRequest($newRequest);
 	    $route = $routeContext->getRoute();
 	    $callable = explode(':',$route->getCallable());
