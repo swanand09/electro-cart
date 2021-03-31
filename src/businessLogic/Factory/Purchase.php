@@ -141,7 +141,7 @@ final class Purchase
      */
     public static function getPurchasedItem($type) : array
     {
-        if (in_array($type, Abstract_ElectronicItem::$types)) {
+        if (in_array($type, Abstract_ElectronicItem::$types)&&$type!=Abstract_ElectronicItem::ELECTRONIC_ITEM_CONTROLLER) {
             $purchasedItems =  self::getPurchasedItems();
         
             $electronicItems = new ElectronicItems($purchasedItems['sortedItems']);
