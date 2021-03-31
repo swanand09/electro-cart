@@ -18,21 +18,13 @@ final class ApiPurchaseItem extends Abstract_AppController
      */
     protected function renderContent(array $itemBought, Response $response) :Response
     {
-        try {
-        	if(isset($itemBought['error'])){
-        		throw new \ErrorException($itemBought['error']);
-	        }
             $response->getBody()->write(json_encode($itemBought, JSON_PRETTY_PRINT));
             return $response
                 ->withHeader('Content-Type', 'application/json')
                 ->withHeader('Access-Control-Allow-Origin', '*')
                 ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
                 ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-        } catch (\ErrorException $e) {
-            $response->getBody()->write(json_encode(["error"=>["text"=>$e->getMessage()]]));
-            return $response
-                ->withHeader('Content-Type', 'application/json');
-        }
+        
     }
 	
 	/**
@@ -43,12 +35,13 @@ final class ApiPurchaseItem extends Abstract_AppController
 	 */
 	public function getPurchasedItem(Request $request, Response $response) :Response
 	{
-		if(!isset($request->getQueryParams()['error'])){
-			
-			return parent::getPurchasedItem($request, $response);
-		}else{
-			
-			return $this->renderContent(['error'=>$request->getQueryParams()['error']], $response);
-		}
+		return parent::getPurchasedItem($request, $response);
+	}
+	
+	public function error(Request $request, Response $response):Response
+	{
+		$response->getBody()->write(json_encode(["error"=>["text"=>$request->getQueryParams()['error']]]));
+		return $response
+			->withHeader('Content-Type', 'application/json');
 	}
 }

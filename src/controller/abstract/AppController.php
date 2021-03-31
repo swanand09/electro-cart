@@ -9,7 +9,8 @@ use Tracktik\BusinessLogic\Factory\Purchase;
 abstract class AppController implements Interface_AppController
 {
     abstract protected function renderContent(array $itemBought, Response $response);
-	
+    
+	abstract public function error(Request $request, Response $response);
     /**
      * @param Request $request
      * @param Response $response

@@ -74,16 +74,15 @@ final class PurchaseItem extends Abstract_AppController
 	 */
     public function getPurchasedItem(Request $request, Response $response) :Response
     {
-        if(!isset($request->getQueryParams()['error'])){
-
-            $type = $request->getQueryParams()['type'];
-            $this->template = 'item_purchased.html.twig';
-            $this->title    = "{$type} items";
-            return parent::getPurchasedItem($request, $response);
-        }else{
-
-            return $this->view->render($response, 'error.html.twig', ['title'=>'Error','errorMsg'=>$request->getQueryParams()['error']]);
-        }
+			$type = $request->getQueryParams()['type'];
+			$this->template = 'item_purchased.html.twig';
+			$this->title    = "{$type} items";
+			return parent::getPurchasedItem($request, $response);
     }
     
+
+    public function error(Request $request, Response $response):Response
+    {
+        return $this->view->render($response, 'error.html.twig', ['title'=>'Error','errorMsg'=>$request->getQueryParams()['error']]);
+    }
 }
