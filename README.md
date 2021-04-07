@@ -1,5 +1,4 @@
-# Tracktik Test Assessment for PHP Backend Developer
-### Simulation of buying of electronic items
+## Simulation of buying of electronic items
 
 ## Directory Structure
 ```
@@ -34,16 +33,16 @@
 server {
 	
   listen 80;
-  server_name tracktik.test;
-  return 301 https://tracktik.test$request_uri;
+  server_name demo.test;
+  return 301 https://demo.test$request_uri;
 }
 
 server {
 	
   listen 443;
-  server_name tracktik.test;
+  server_name demo.test;
 
-  root /Users/myname/Trakit_test/test_swanand09;
+  root /Users/myname/demo/test_swanand09;
 
   include ssl.inc;
 
@@ -71,30 +70,30 @@ server {
 }
 ```
 
-- add ``` 127.0.0.1	tracktik.test ``` to /etc/hosts
+- add ``` 127.0.0.1	demo.test ``` to /etc/hosts
 - run `nginx.restart`
 - Go to project folder and do `composer install`
 - access these urls on the browser:
-    - https://tracktik.test
-    - https://tracktik.test/console-bought/
-    - http://tracktik.test/api/list-items-purchase/
-    - https://tracktik.test/api/console-bought/
+    - https://demo.test
+    - https://demo.test/console-bought/
+    - http://demo.test/api/list-items-purchase/
+    - https://demo.test/api/console-bought/
 
 
 ## Answers to questions
 ### API Endpoints:
-- Question1 : **http://tracktik.test/api/list-items-purchase/**
+- Question1 : **http://demo.test/api/list-items-purchase/**
 - Question2: 
-  - **https://tracktik.test/api/item-purchase/?type=console**
-  - **https://tracktik.test/api/item-purchase/?type=microwave**
-  - **https://tracktik.test/api/item-purchase/?type=television**
+  - **https://demo.test/api/item-purchase/?type=console**
+  - **https://demo.test/api/item-purchase/?type=microwave**
+  - **https://demo.test/api/item-purchase/?type=television**
 
 ### Urls:
-- Question1 : **https://tracktik.test**
+- Question1 : **https://demo.test**
 - Question2: 
-  - **https://tracktik.test/item-purchase/?type=console**
-  - **https://tracktik.test/item-purchase/?type=microwave**
-  - **https://tracktik.test/item-purchase/?type=television**
+  - **https://demo.test/item-purchase/?type=console**
+  - **https://demo.test/item-purchase/?type=microwave**
+  - **https://demo.test/item-purchase/?type=television**
   
 ## Unit Testing 
 - run `vendor/bin/phpunit`  
