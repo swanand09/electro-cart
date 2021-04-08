@@ -134,11 +134,13 @@ final class Purchase
 
         return compact(["sortedItems", "totalPrice"]);
     }
-    
-    /**
-     * list console details with extras
-     * @return array
-     */
+	
+	/**
+	 * list console details with extras
+	 * @param $type
+	 * @return array
+	 * @throws \ErrorException
+	 */
     public static function getPurchasedItem($type) : array
     {
         if (in_array($type, Abstract_ElectronicItem::$types)&&$type!=Abstract_ElectronicItem::ELECTRONIC_ITEM_CONTROLLER) {
